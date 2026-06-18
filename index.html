@@ -143,6 +143,12 @@ footer{
   text-align:center;padding:36px 24px;border-top:1px solid #ebebeb;
   font-size:.8rem;color:#bbb
 }
+.visitor-stats{
+  margin-top:12px;
+  font-size:.82rem;
+  color:#999;
+}
+.visitor-stats .sep{margin:0 8px;color:#ddd}
 
 @media(max-width:600px){
   .site-header{padding:44px 16px 34px}
@@ -207,24 +213,27 @@ footer{
 
   <section class="sec">
     <h2 class="sec-title">More Results</h2>
-    <!-- <p class="sec-desc left">
-      Qualitative comparison of segmentation results across the five datasets.
-      To better reveal fine structural details, <b>color-coded error maps</b> are provided for
-      <b>DRIVE</b>, <b>FIVES</b>, and <b>ROSE</b>, where
-      <span class="green">green</span> denotes correct predictions,
-      <span class="red">red</span> denotes missed structures, and
-      <span class="purple">purple</span> denotes over-segmentation.
-      <b>Binary predictions</b> are shown for <b>CCM</b> and <b>SpermSeg</b>, where the
-      curvilinear structures in the selected examples are comparatively sparser.
-      D²Mamba maintains superior structural continuity across all tasks.
-    </p> -->
     <div class="results-grid" id="results-grid">
     </div>
   </section>
 
 </div><!-- /page -->
 
-<footer>D<sup>2</sup>Mamba Project Page</footer>
+<footer>
+  D<sup>2</sup>Mamba Project Page
+  <div class="visitor-stats">
+    <span id="busuanzi_container_site_pv" style="display:none;">
+      👁 Total Visits: <span id="busuanzi_value_site_pv"></span>
+    </span>
+    <span class="sep" id="busuanzi_sep" style="display:none;">|</span>
+    <span id="busuanzi_container_site_uv" style="display:none;">
+      Unique Visitors: <span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+</footer>
+
+<!-- 访客统计：不蒜子 busuanzi（部署到真实站点后生效，本预览沙箱会被拦截） -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <script>
 function initCarousel(slidesContainerId, dotsContainerId, prevBtnId, nextBtnId, imagePaths, captions) {
@@ -440,6 +449,17 @@ if (resultsGrid) {
 
 initCarousel('ds-slides', 'ds-dots', 'ds-prev', 'ds-next', spermSegExampleImages, spermSegCaptions);
 
+// 不蒜子加载成功后会自动填充计数，这里把对应容器显示出来
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const pv = document.getElementById('busuanzi_value_site_pv');
+    if (pv && pv.innerText.trim() !== '') {
+      document.getElementById('busuanzi_container_site_pv').style.display = 'inline';
+      document.getElementById('busuanzi_container_site_uv').style.display = 'inline';
+      document.getElementById('busuanzi_sep').style.display = 'inline';
+    }
+  }, 1500);
+});
 </script>
 </body>
 </html>
